@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= cv.name %> - CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header h2 {
+            font-size: 1.3em;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .contact-info span {
+            font-size: 0.95em;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        .section h3 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .summary {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .experience-item, .education-item {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 3px solid #764ba2;
+        }
+        
+        .experience-item h4, .education-item h4 {
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        
+        .company, .school {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .period, .year {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        
+        .stats {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .stats p {
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><%= cv.name %></h1>
+            <h2><%= cv.title %></h2>
+            <div class="contact-info">
+                <span>📧 <%= cv.email %></span>
+                <span>📱 <%= cv.phone %></span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h3>🎯 Summary</h3>
+                <p class="summary"><%= cv.summary %></p>
+            </div>
+            
+            <div class="section">
+                <h3>💼 Experience</h3>
+                <% cv.experience.forEach(function(exp) { %>
+                    <div class="experience-item">
+                        <h4><%= exp.position %></h4>
+                        <div class="company"><%= exp.company %></div>
+                        <div class="period"><%= exp.period %></div>
+                        <p><%= exp.description %></p>
+                    </div>
+                <% }); %>
+            </div>
+            
+            <div class="section">
+                <h3>🎓 Education</h3>
+                <% cv.education.forEach(function(edu) { %>
+                    <div class="education-item">
+                        <h4><%= edu.degree %></h4>
+                        <div class="school"><%= edu.school %></div>
+                        <div class="year"><%= edu.year %></div>
+                    </div>
+                <% }); %>
+            </div>
+            
+            <div class="section">
+                <h3>🛠️ Skills</h3>
+                <div class="skills">
+                    <% cv.skills.forEach(function(skill) { %>
+                        <span class="skill-tag"><%= skill %></span>
+                    <% }); %>
+                </div>
+            </div>
+            
+            <div class="stats">
+                <p>👁️ Page Views: <%= viewCount %></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
