@@ -1,0 +1,59 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Tests et Build
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x]
+    
+    steps:
+    - name: 📥 Checkout du code
+      uses: actions/checkout@v3
+    
+    - name: 🔧 Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: webapp/package-lock.json
+    
+    - name: 📦 Installation des dépendances
+      working-directory: ./webapp
+      run: npm ci
+    
+    - name: 🧪 Lancer les tests
+      working-directory: ./webapp
+      run: npm test
+    
+    - name: ✅ Tests réussis
+      if: success()
+      run: echo "✅ Tous les tests sont passés avec succès !"
+    
+    - name: ❌ Tests échoués
+      if: failure()
+      run: echo "❌ Des tests ont échoué. Vérifiez les logs."
+
+  build:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: 📥 Checkout du code
+      uses: actions/checkout@v3
+    
+    - name: 🐳 Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    
+    - name: 📝 Vérification (Build sera ajouté plus tard)
+      run: echo "✅ Build Docker sera configuré dans la Phase 4"
