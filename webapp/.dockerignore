@@ -1,0 +1,42 @@
+# Dépendances
+node_modules
+npm-debug.log
+
+# Tests
+test
+*.test.js
+coverage
+
+# Fichiers de développement
+.env
+.env.local
+.env.development
+.env.test
+
+# Documentation
+README.md
+CHANGELOG.md
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Fichiers temporaires
+tmp
+temp
+*.tmp
