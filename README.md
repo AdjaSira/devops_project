@@ -1,5 +1,6 @@
 # Projet DevOps - Application Web CV
 
+![CI/CD](https://github.com/AdjaSira/devops_project/workflows/CI%2FCD%20Pipeline/badge.svg)
 ![Project Status](https://img.shields.io/badge/statut-en%20cours-yellow)
 ![Node.js](https://img.shields.io/badge/node.js-v14+-green)
 
@@ -52,9 +53,9 @@ Application web DevOps complète comprenant :
 - [x] Tests automatisés (8 tests)
 
 ### CI/CD 🚧
-- [ ] GitHub Actions
-- [ ] Tests automatiques
-- [ ] Déploiement automatique
+- [x] GitHub Actions
+- [x] Tests automatiques
+- [x] Déploiement automatique
 
 ### Docker 🚧
 - [ ] Dockerfile
@@ -228,7 +229,7 @@ npm test
 
 ## 🔄 CI/CD
 
-**Statut :** 🚧 À venir
+**Statut :** ✅ Fonctionnel
 
 Pipeline prévu :
 1. Build - Installation des dépendances
