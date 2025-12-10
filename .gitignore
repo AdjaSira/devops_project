@@ -1,0 +1,14 @@
+# Ignorer les dépendances
+node_modules/
+
+# Ignorer les fichiers de build
+dist/
+build/
+
+# Ignorer les logs
+*.log
+logs/
+
+
+# Ignorer les fichiers sensibles
+.env

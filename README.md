@@ -52,10 +52,10 @@ Application web DevOps complète comprenant :
 - [x] API REST `/api/views`
 - [x] Tests automatisés (8 tests)
 
-### CI/CD 🚧
+### CI/CD ✅ 
 - [x] GitHub Actions
 - [x] Tests automatiques
-- [x] Déploiement automatique
+- [x] Déploiement automatique (render)
 
 ### Docker 🚧
 - [ ] Dockerfile
@@ -234,8 +234,26 @@ npm test
 Pipeline prévu :
 1. Build - Installation des dépendances
 2. Test - Exécution des tests
-3. Deploy - Déploiement automatique
+3. Deploy - Déploiement automatique sur Render
 
+### Déploiement Render
+
+- Compte créé sur [Render.com](https://render.com)
+- Web Service configuré :
+  - **Name:** devops-webapp  
+  - **Root Directory:** `webapp`  
+  - **Build Command:** `npm install`  
+  - **Start Command:** `npm start`  
+  - **Plan:** Free  
+- Variables d’environnement :
+  ```env
+  PORT=10000
+  REDIS_HOST=
+  REDIS_PORT=
+
+Application déployée avec succès ✅
+
+URL de production : https://devops-webapp-hzpa.onrender.com
 ---
 
 ## 🐳 Docker
@@ -325,7 +343,17 @@ devops-project/
 
 ### Tests
 ![Tests](image/tests-passing.png)
+![Tests](image/tests-local.png)
 
+
+### CI/CD - Workflow GitHub Actions
+![Workflow](image/ci-cd-success.png)
+
+### Badge CI/CD vert dans le README
+![Badge](image/badge.png)
+
+### Application déployée sur Render
+![Render](image/render-app.png)
 ---
 
 ## 🔗 Liens

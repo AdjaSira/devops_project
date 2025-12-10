@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: devops-webapp
+    env: node
+    region: frankfurt
+    plan: free
+    buildCommand: cd webapp && npm install
+    startCommand: cd webapp && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    healthCheckPath: /health
