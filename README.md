@@ -58,8 +58,8 @@ Application web DevOps complète comprenant :
 - [x] Déploiement automatique (render)
 
 ### Docker 🚧
-- [ ] Dockerfile
-- [ ] Image sur Docker Hub
+- [x] Dockerfile
+- [x] Image sur Docker Hub
 
 ### Infrastructure 🚧
 - [ ] VM Vagrant
@@ -253,24 +253,27 @@ Pipeline prévu :
 
 Application déployée avec succès ✅
 
-URL de production : https://devops-webapp-hzpa.onrender.com
+URL de production : [https://devops-webapp-hzpa.onrender.com](https://devops-webapp-hzpa.onrender.com)
 ---
 
 ## 🐳 Docker
 
-**Statut :** 🚧 À venir
+**Statut :** ✅ Fonctionnel
 
-### Construire l'image
+### Pull l'image depuis Docker Hub
 ```bash
-docker build -t devops-webapp:latest ./webapp
+docker pull adjasira/devops-webapp:latest
 ```
 
 ### Lancer le conteneur
 ```bash
-docker run -p 3000:3000 devops-webapp:latest
-```
+docker run -d -p 3000:3000 --name devops-app adjasira/devops-webapp:latest
+``````
 
-**Lien Docker Hub :** À venir
+### Accéder à l'application
+Ouvrir `http://localhost:3000`
+
+**Lien Docker Hub :** [https://hub.docker.com/r/adjasira/devops-webapp](https://hub.docker.com/r/adjasira/devops-webapp)
 
 ---
 
@@ -320,7 +323,7 @@ devops-project/
 │   ├── test/
 │   │   └── test.js
 │   ├── package.json
-│   ├── Dockerfile        # À venir
+│   ├── Dockerfile        
 │   └── .env
 ├── iac/
 │   ├── Vagrantfile       # À venir
@@ -354,6 +357,12 @@ devops-project/
 
 ### Application déployée sur Render
 ![Render](image/render-app.png)
+
+### Résultats docker
+![docker build](image/docker-build.png)
+![docker hub](image/docker-hub.png)
+![docker run](image/docker-run.png)
+![docker github actions](image/github-actions-docker.png)
 ---
 
 ## 🔗 Liens
